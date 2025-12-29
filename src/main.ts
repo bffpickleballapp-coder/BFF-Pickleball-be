@@ -12,7 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     rawBody: true, // <--- THÊM DÒNG QUAN TRỌNG NÀY
   });
-
+  app.enableCors();
   app.use(
     helmet({
       contentSecurityPolicy: {
@@ -61,7 +61,6 @@ async function bootstrap() {
   });
   app.useGlobalInterceptors(new HttpResponseInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter());
-  app.enableCors();
 
   const eviroment = process.env.ENVIROMENT ?? 'Development';
   const port = process.env.PORT ?? 3000;
@@ -73,20 +72,41 @@ async function bootstrap() {
       .addTag('cats')
       .addBearerAuth()
       .build();
-    const { apiReference } = await import('@scalar/nestjs-api-reference');
+
     const document = SwaggerModule.createDocument(app, config);
-    const pathScalar = process.env.DOC_SCALAR_PATH ?? 'scalar';
-    const theme = (process.env.DOC_THEME as ScalarTheme) ?? 'purple';
+
+    // Lấy đường dẫn từ env hoặc dùng default
     const pathSwagger = process.env.DOC_SWAGGER_PATH ?? 'swagger';
-    SwaggerModule.setup(pathSwagger, app, document);
+    const pathScalar = process.env.DOC_SCALAR_PATH ?? 'scalar';
+    const theme = (process.env.DOC_THEME as any) ?? 'purple';
+
+    // --- SETUP 1: SWAGGER UI (Dùng CDN để fix lỗi màn hình trắng trên Vercel) ---
+    SwaggerModule.setup(pathSwagger, app, document, {
+      customCssUrl:
+        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css',
+      customJs: [
+        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js',
+      ],
+      swaggerOptions: {
+        persistAuthorization: true, // Giữ token khi reload trang
+        displayRequestDuration: true,
+      },
+    });
+
+    // --- SETUP 2: SCALAR (Import động để fix lỗi ESM trên Vercel) ---
+    const { apiReference } = await import('@scalar/nestjs-api-reference');
 
     app.use(
       `/${pathScalar}`,
       apiReference({
         theme: theme,
-        content: document,
+
+        content: document, // Chuẩn mới của Scalar dùng spec.content
       }),
     );
+
+    // --- LOGGING ---
     console.table({
       '🚀 Application is running on:': `http://localhost:${port}/api`,
       '📑 Swagger Documentation:': `http://localhost:${port}/${pathSwagger}`,
