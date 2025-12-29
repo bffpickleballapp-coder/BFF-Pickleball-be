@@ -3,7 +3,7 @@ import { BaseCRUDService } from '@src/shared/services/base-crud.service';
 import { MODEL_NAME } from '@src/shared/constants/model.name.enum';
 import { Users } from '@src/generated/prisma/client';
 import { HttpResponse } from '@src/shared/interfaces';
-import { CreateUserFromClerkDto, RoleClerkDto } from './user.dto';
+import { CreateUserFromClerkDto, RoleClerkDto } from '../user/user.dto';
 import { plainToInstance } from 'class-transformer';
 
 @Injectable()

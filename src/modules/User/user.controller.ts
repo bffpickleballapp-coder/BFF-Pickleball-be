@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { UsersService } from './user.service';
+import { UsersService } from '../user/user.service';
 import { Auth } from '../authentication/decorators/auth.decorator';
-import { RequestUser } from './decorators/RequestUser.decorator';
+import { RequestUser } from '../user/decorators/RequestUser.decorator';
 import type { ClerkUserPayload } from '../authentication/interface';
 
 @Controller('users')

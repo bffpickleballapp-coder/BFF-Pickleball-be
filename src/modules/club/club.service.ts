@@ -15,7 +15,7 @@ import { STATUS_USER_CLUB } from '@src/shared/constants/bases.enum';
 import { Clubs } from '@src/generated/prisma/client';
 import { CLUB_LIST_SELECT, CLUB_SELECT, MEMBERS } from './club.selection';
 import { MY_CLUB_TYPE } from './club.constant';
-import { UsersService } from '../User/user.service';
+import { UsersService } from '../user/user.service';
 import { ClerkUserPayload } from '../authentication/interface';
 
 @Injectable()

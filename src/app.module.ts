@@ -22,7 +22,7 @@ import { MembershipPlanModule } from './modules/membership-plan/membership-plan.
 import { NotificationModule } from './modules/notification/notification.module';
 import { MatchModule } from './modules/match/match.module';
 import { KpiModule } from './modules/kpi/kpi.module';
-import { UsersModule } from './modules/User/user.module';
+import { UsersModule } from './modules/user/user.module';
 
 @Module({
   imports: [
