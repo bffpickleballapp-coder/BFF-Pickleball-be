@@ -1,12 +1,6 @@
-import {
-  Controller,
-  Post,
-  Headers,
-  Body,
-  BadRequestException,
-} from '@nestjs/common';
+import { Controller, Post, Headers, Body } from '@nestjs/common';
 import { ClerkWebhookService } from './clerk-webhook.service';
-import { UsersService } from '@src/modules/user/user.service';
+import { UsersService } from '../../modules/user/user.service';
 
 @Controller('webhook')
 export class ClerkWebhookController {

@@ -10,7 +10,7 @@ import { Request, Response } from 'express';
 import {
   createErrorLogDetails,
   sanitizeRequestBody,
-} from '@src/shared/helpers/error-logging.helper';
+} from '../helpers/error-logging.helper';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {

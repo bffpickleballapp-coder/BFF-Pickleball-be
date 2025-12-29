@@ -4,15 +4,15 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { MODEL_NAME } from '@src/shared/constants/model.name.enum';
-import { BaseCRUDService } from '@src/shared/services/base-crud.service';
+import { MODEL_NAME } from '../../shared/constants/model.name.enum';
+import { BaseCRUDService } from '../../shared/services/base-crud.service';
 import { ClubMemberStatusDto, CreateClubDto, UpdateClubDto } from './club.dto';
-import { HttpResponse, PaginationResult } from '@src/shared/interfaces';
-import { validateRegion } from '@src/shared/util/validate.region';
-import { uploadImgService } from '@src/shared/util/upload-img';
-import { PaginatedDynamicQueryDto } from '@src/shared/dtos/pagination.dto';
-import { STATUS_USER_CLUB } from '@src/shared/constants/bases.enum';
-import { Clubs } from '@src/generated/prisma/client';
+import { HttpResponse, PaginationResult } from '../../shared/interfaces';
+import { validateRegion } from '../../shared/util/validate.region';
+import { uploadImgService } from '../../shared/util/upload-img';
+import { PaginatedDynamicQueryDto } from '../../shared/dtos/pagination.dto';
+import { STATUS_USER_CLUB } from '../../shared/constants/bases.enum';
+import { Clubs } from '../../generated/prisma/client';
 import { CLUB_LIST_SELECT, CLUB_SELECT, MEMBERS } from './club.selection';
 import { MY_CLUB_TYPE } from './club.constant';
 import { UsersService } from '../user/user.service';

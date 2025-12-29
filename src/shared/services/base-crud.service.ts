@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { PrismaClient } from '@src/generated/prisma/client';
+import { PrismaClient } from '../../generated/prisma/client';
 import type {
   CrudOptions,
   CrudServiceOpts,
   PaginationResult,
 } from '../interfaces';
-import { parseSort } from '@src/shared/helpers/query-helper';
-import { PaginationDto } from '@src/shared/dtos/pagination.dto';
+import { parseSort } from '../helpers/query-helper';
+import { PaginationDto } from '../dtos/pagination.dto';
 import { PrismaService } from './prisma.service';
 
 @Injectable()

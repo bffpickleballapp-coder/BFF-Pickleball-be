@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { BaseCRUDService } from '@src/shared/services/base-crud.service';
-import { MODEL_NAME } from '@src/shared/constants/model.name.enum';
-import { Users } from '@src/generated/prisma/client';
-import { HttpResponse } from '@src/shared/interfaces';
-import { CreateUserFromClerkDto, RoleClerkDto } from '../user/user.dto';
+import { BaseCRUDService } from '../../shared/services/base-crud.service';
+import { MODEL_NAME } from '../../shared/constants/model.name.enum';
+import { Users } from '../../generated/prisma/client';
+import { HttpResponse } from '../../shared/interfaces';
+import { CreateUserFromClerkDto, RoleClerkDto } from './user.dto';
 import { plainToInstance } from 'class-transformer';
 
 @Injectable()

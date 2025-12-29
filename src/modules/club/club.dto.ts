@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { PaginatedDynamicQueryDto } from '@src/shared/dtos/pagination.dto';
+import { PaginatedDynamicQueryDto } from '../../shared/dtos/pagination.dto';
 import { Transform } from 'class-transformer';
 import {
   IsBoolean,

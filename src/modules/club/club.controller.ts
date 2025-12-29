@@ -22,7 +22,7 @@ import {
 } from './club.dto';
 import { ApiConsumes, ApiResponse } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { PaginatedDynamicQueryDto } from '@src/shared/dtos/pagination.dto';
+import { PaginatedDynamicQueryDto } from '../../shared/dtos/pagination.dto';
 import { ClubPaginationResponse, ClubResponse } from './club.response';
 import { Auth } from '../authentication/decorators/auth.decorator';
 

@@ -1,8 +1,5 @@
-import * as moduleAlias from 'module-alias';
-import { resolve } from 'path';
-moduleAlias.addAlias('@src', resolve(__dirname));
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe, VersioningType, RequestMethod } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
 import { json, urlencoded } from 'express';
