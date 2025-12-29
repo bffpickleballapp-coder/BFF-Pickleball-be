@@ -1,5 +1,5 @@
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
-import { ClerkUserPayload } from '@src/modules/authentication/interface';
+import { ClerkUserPayload } from '../../authentication/interface';
 
 export const RequestUser = createParamDecorator(
   async (isOptional: string, ctx: ExecutionContext) => {

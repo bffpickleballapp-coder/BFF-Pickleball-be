@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { HttpResponse } from 'src/shared/interfaces';
+import { HttpResponse } from './shared/interfaces';
 import { uploadImgService } from './shared/util/upload-img';
 
 @Injectable()
