@@ -1,4 +1,6 @@
-import 'module-alias/register';
+import * as moduleAlias from 'module-alias';
+import { resolve } from 'path';
+moduleAlias.addAlias('@src', resolve(__dirname));
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, VersioningType, RequestMethod } from '@nestjs/common';
 import { AppModule } from './app.module';
