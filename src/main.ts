@@ -4,7 +4,6 @@ import { AppModule } from './app.module';
 import helmet from 'helmet';
 import { json, urlencoded } from 'express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { apiReference } from '@scalar/nestjs-api-reference';
 import { ScalarTheme } from './shared/helpers/scalar.theme';
 import { HttpResponseInterceptor } from './shared/interceptors/http-response.interceptor';
 import { AllExceptionsFilter } from './shared/interceptors/http-exception.filter';
@@ -74,7 +73,7 @@ async function bootstrap() {
       .addTag('cats')
       .addBearerAuth()
       .build();
-
+    const { apiReference } = await import('@scalar/nestjs-api-reference');
     const document = SwaggerModule.createDocument(app, config);
     const pathScalar = process.env.DOC_SCALAR_PATH ?? 'scalar';
     const theme = (process.env.DOC_THEME as ScalarTheme) ?? 'purple';
