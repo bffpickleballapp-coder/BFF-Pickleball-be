@@ -1,0 +1,19 @@
+model ClubStatistics {
+  id                Int       @id @default(autoincrement())
+  clubId            Int       @map("club_id")
+  year              Int       @map("year")
+  month             Int       @map("month")
+  totalCost         Decimal   @default(0) @map("total_cost") @db.Decimal(18, 2)
+  sessionsCount     Int       @default(0) @map("sessions_count")
+  noShowCount       Int       @default(0) @map("no_show_count")
+  activeMembership  Int       @default(0) @map("active_membership")
+  expriedMembership Int       @default(0) @map("expried_membership")
+  totalOutsider     Int       @default(0) @map("total_outsider")
+  updatedAt         DateTime? @updatedAt @map("updated_at")
+
+  club Clubs @relation(fields: [clubId], references: [id])
+
+  @@unique([clubId, year, month])
+  @@index([year, month])
+  @@map("club_statistics")
+}

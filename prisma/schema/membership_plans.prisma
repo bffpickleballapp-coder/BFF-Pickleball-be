@@ -1,0 +1,22 @@
+model MembershipPlans {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(200)
+  description  String?  @db.Text
+  price        Decimal  @db.Decimal(12, 2)
+  sessionLimit Int?     @map("session_limit")
+  durationDays Int      @map("duration_days") // Validity in days
+  isActive     Boolean? @default(true) @map("is_active")
+  clubId       Int      @map("club_id")
+  sessionHours Int?     @map("session_hours")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  club Clubs @relation(fields: [clubId], references: [id])
+
+  userMemberships UserMemberships[]
+  payments        Payments[]
+
+  @@map("membership_plans")
+}

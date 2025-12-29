@@ -1,0 +1,11 @@
+view SystemKpiSummary {
+  year           Int
+  month          Int
+  totalSessions  Int
+  noShowRate     Float
+  conversionRate Float
+  retentionRate  Float
+
+  @@unique([year, month])
+  @@map("system_kpi_summary")
+}

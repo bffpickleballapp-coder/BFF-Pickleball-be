@@ -1,0 +1,17 @@
+export enum MODEL_NAME {
+  PROVINCES = 'Provinces',
+  WARDS = 'Wards',
+  VENUES = 'Venues',
+  USERS = 'Users',
+  SESSION_PLAYERS = 'SessionPlayers',
+  USER_MEMBERSHIPS = 'UserMemberships',
+  MEMBERSHIP_PLANS = 'MembershipPlans',
+  CLUBS = 'Clubs',
+  CLUB_MEMBERS = 'ClubMembers',
+  SESSIONS = 'Sessions',
+  MATCHES = 'Matches',
+  MATCH_PLAYERS = 'MatchPlayers',
+  NOTIFICATIONS = 'Notifications',
+  PAYMENTS = 'Payments',
+  APP_SETTINGS = 'AppSettings',
+}

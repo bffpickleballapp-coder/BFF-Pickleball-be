@@ -1,0 +1,33 @@
+model Users {
+  id          String   @id @default(uuid()) @db.VarChar(36)
+  clerkId     String   @unique @map("clerk_id") @db.Text
+  name        String   @db.VarChar(255)
+  email       String   @unique @db.VarChar(255)
+  role        String   @default("user") @db.VarChar(50)
+  avatarUrl   String?  @map("avatar_url") @db.Text
+  bankingInfo Json?    @map("banking_info") @db.JsonB
+  duprId      String?  @unique @map("dupr_id") @db.Text
+  points      Decimal? @default(0) @db.Decimal(15, 10)
+  gender      Boolean? @default(false)
+
+  provinceCode String? @map("province_code")
+  wardCode     String? @map("ward_code")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  clubs    Clubs[]    @relation("club_owner")
+  sessions Sessions[] @relation("session_host")
+
+  matchPlayers    MatchPlayers[]
+  notifications   Notifications[]
+  payments        Payments[]
+  sessionPlayers  SessionPlayers[]
+  userMemberships UserMemberships[]
+  clubMembers     ClubMembers[]
+
+  @@index([provinceCode])
+  @@index([wardCode])
+  @@map("users")
+}

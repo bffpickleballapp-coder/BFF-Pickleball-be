@@ -1,0 +1,11 @@
+model MatchPlayers {
+  matchId Int     @map("match_id")
+  userId  String  @map("user_id") @db.VarChar(36)
+  team    String? @db.VarChar(10)
+
+  match Matches @relation(fields: [matchId], references: [id])
+  user  Users   @relation(fields: [userId], references: [id])
+
+  @@id([matchId, userId])
+  @@map("match_players")
+}

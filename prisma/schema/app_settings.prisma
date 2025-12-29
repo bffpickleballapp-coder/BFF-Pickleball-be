@@ -1,0 +1,7 @@
+model AppSettings {
+  key         String  @id
+  value       Json?   @default("{}") @db.JsonB
+  description String? @db.Text
+
+  @@map("app_settings")
+}

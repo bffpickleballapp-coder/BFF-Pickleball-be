@@ -1,0 +1,13 @@
+model ClubMembers {
+  clubId Int     @map("club_id")
+  userId String  @map("user_id") @db.VarChar(36)
+  status String? @db.VarChar(50)
+
+  joinedAt DateTime? @map("joined_at")
+
+  club Clubs @relation(fields: [clubId], references: [id])
+  user Users @relation(fields: [userId], references: [id])
+
+  @@id([clubId, userId])
+  @@map("club_members")
+}

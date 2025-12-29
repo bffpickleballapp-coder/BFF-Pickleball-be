@@ -1,0 +1,21 @@
+model Venues {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(200)
+  provinceCode String   @map("province_code")
+  wardCode     String   @map("ward_code")
+  address      Json?    @db.JsonB
+  linkGgmap    String?  @map("link_ggmap")
+  lat          Decimal? @db.Decimal(10, 8)
+  lng          Decimal? @db.Decimal(11, 8)
+  isVerify     Boolean? @default(false) @map("is_verify")
+  description  String?  @db.Text
+
+  deletedAt DateTime? @map("deleted_at")
+
+  sessions Sessions[] @relation("venue_session")
+
+  @@index([lat, lng])
+  @@index([provinceCode])
+  @@index([wardCode])
+  @@map("venues")
+}

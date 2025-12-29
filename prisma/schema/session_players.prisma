@@ -1,0 +1,17 @@
+model SessionPlayers {
+  id                 Int      @id @default(autoincrement())
+  sessionId          Int      @map("session_id")
+  userId             String   @map("user_id") @db.VarChar(36)
+  isMembership       Boolean? @map("is_membership")
+  registrationStatus String?  @map("registration_status") @db.VarChar(50)
+  checkInStatus      String?  @map("check_in_status") @db.VarChar(50)
+  status             String?  @db.VarChar(50)
+
+  createdAt DateTime? @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  session Sessions @relation(fields: [sessionId], references: [id])
+  user    Users    @relation(fields: [userId], references: [id])
+
+  @@map("session_players")
+}

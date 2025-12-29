@@ -1,0 +1,17 @@
+model UserMemberships {
+  id                Int      @id @default(autoincrement())
+  userId            String   @map("user_id") @db.VarChar(36)
+  planId            Int      @map("plan_id")
+  startDate         DateTime @map("start_date") @db.Date
+  endDate           DateTime @map("end_date") @db.Date
+  status            String?  @db.VarChar(50)
+  remainingSessions Int?     @map("remaining_sessions")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  user Users           @relation(fields: [userId], references: [id])
+  plan MembershipPlans @relation(fields: [planId], references: [id])
+
+  @@map("user_memberships")
+}
