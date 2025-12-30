@@ -13,7 +13,7 @@ export interface uploadImgResponse {
 }
 @Injectable()
 export class uploadImgService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async uploadImage(
     file: Express.Multer.File,
@@ -58,7 +58,6 @@ export class uploadImgService {
         throw new Error('Failed to refresh token');
       }
       return await this.uploadImage(file, folder, token);
-
     } else if (response.success || response.code === 200) {
       const uploadFile = await this.uploadFile(
         response.response.uploadUrl,
@@ -88,7 +87,6 @@ export class uploadImgService {
     code: number;
     response: any;
   }> {
-    const workspaceId = '4693';
     const response = await fetch(
       `https://api.diaflow.io/api/v1/drives/s3/presigned`,
       {
@@ -101,7 +99,6 @@ export class uploadImgService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-          'Workspace-id': workspaceId,
         },
       },
     );
