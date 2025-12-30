@@ -75,21 +75,19 @@ async function bootstrap() {
 
     const document = SwaggerModule.createDocument(app, config);
 
-    // Lấy đường dẫn từ env hoặc dùng default
     const pathSwagger = process.env.DOC_SWAGGER_PATH ?? 'swagger';
     const pathScalar = process.env.DOC_SCALAR_PATH ?? 'scalar';
     const theme = (process.env.DOC_THEME as any) ?? 'purple';
 
-    // --- SETUP 1: SWAGGER UI (Dùng CDN để fix lỗi màn hình trắng trên Vercel) ---
     SwaggerModule.setup(pathSwagger, app, document, {
       customCssUrl:
-        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css',
+        'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.0.0/swagger-ui.css',
       customJs: [
-        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js',
+        'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.0.0/swagger-ui-bundle.js',
+        'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.0.0/swagger-ui-standalone-preset.js',
       ],
       swaggerOptions: {
-        persistAuthorization: true, // Giữ token khi reload trang
+        persistAuthorization: true,
         displayRequestDuration: true,
       },
     });
